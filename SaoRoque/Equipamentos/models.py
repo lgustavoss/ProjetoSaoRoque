@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 # Aqui começam os cadatros
 # Classe colaborador
@@ -11,7 +12,6 @@ class Colaborador(models.Model):
         ordering = ['nome']
         verbose_name = "Colaborador"
         verbose_name_plural = "Colaboradores"
-
 
     def __str__(self):
         return self.nome
@@ -25,7 +25,6 @@ class Estabelecimento(models.Model):
     class Meta:
         ordering = ['nome']
         verbose_name = "Estabelecimento"
-
 
     def __str__(self):
         return self.nome
@@ -123,4 +122,3 @@ class Maquininha(models.Model):
 
     def __str__(self):
         return self.tipo
-

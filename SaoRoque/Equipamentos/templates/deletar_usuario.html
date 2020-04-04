@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    <h4> Tem certeza que deseja exclui o usuário "{{ usuario.nome }}" ?</h4>
+    <br>
+<button type="submit" class="bt btn-prymary">
+    Remover
+</button>
+</form>
+
+{% endblock content %}

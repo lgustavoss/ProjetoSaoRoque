@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-lg-12">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>Email</th>
+                {% if request.user.is_superuser %}
+            <th>Acção</th>
+                {% endif %}
+        </tr>
+    </thead>
+    <tbory>
+    {% for usuario in lista %}
+        <tr>
+            <td>{{ usuario.username }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>
+                <a href="{% url 'remover_usuario' pk=usuario.pk %}">
+                    <i class="material-icons">delete</i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbory>
+</table>
+    {% if request.user.is_staff %}
+<br>
+<a href="{% url 'registrar_usuario' %}" class="btn-floating btn-large waves-effect waves-light blue">
+    <i class="material-icons">add</i>
+    {% endif %}
+</a>
+</div>
+{% endblock content %}
