@@ -83,7 +83,7 @@ class Dispositivos(models.Model):
 
 # Classe Adquirentes
 class Adquirentes(models.Model):
-    adquirente = models.CharField(max_length=20, unique=True, help_text="Informe aqui a adquirente.")
+    adquirente = models.CharField(max_length=20, unique=True)
 
     class Meta:
         verbose_name = "Adquirente"

@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% load bootstrap %}
+
+{% block title %}Listar Adquirentes{% endblock %}
+
+{% block content %}
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Adquirente</th>
+            </tr>
+        </thead>
+        {% for value in List %}
+        <tbody>
+            <tr>
+                <th scope="row">{{value.id}}</th>
+                <th>{{value.adquirente}}</th>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}
