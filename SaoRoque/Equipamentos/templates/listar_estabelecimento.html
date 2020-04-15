@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% load bootstrap %}
+
+{% block title %}Listar Estabelecimentos{% endblock %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for estabelecimento in lista %}
+                <tr>
+                    <td>{{estabelecimento.nome}}</td>
+                    <td>{{estabelecimento.cnpj}}</td>
+                    <td>
+                        <a href="{% url 'editar_estabelecimento' pk=estabelecimento.pk %}">
+                            <i class="far fa-edit"></i>
+                        </a>
+
+                        <a href="{% url 'remover_estabelecimento' pk=estabelecimento.pk %}">
+                            <i class="far fa-trash-alt"></i>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="float-right">
+            <h1>
+                <a href="{% url 'cadastrar_estabelecimento' %}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </h1>
+        </div>
+
+
+    </div>
+{% endblock %}

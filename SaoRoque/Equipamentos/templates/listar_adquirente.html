@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% load bootstrap %}
+
+{% block title %}Listar Adquirentes{% endblock %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Adquirente</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for adquirente in lista %}
+                <tr>
+                    <td>{{adquirente.adquirente}}</td>
+                    <td>
+                        <a href="{% url 'editar_adquirente' pk=adquirente.pk %}">
+                            <i class="far fa-edit"></i>
+                        </a>
+
+                        <a href="{% url 'remover_adquirente' pk=adquirente.pk %}">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="float-right">
+            <h1>
+                <a href="{% url 'cadastrar_adquirente' %}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </h1>
+        </div>
+
+
+    </div>
+{% endblock %}

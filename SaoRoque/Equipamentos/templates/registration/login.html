@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt=-br">
 {% load static %}
+{% load bootstrap %}
 <head>
 
   <meta charset="utf-8">
@@ -41,7 +42,7 @@
                   </div>
                   <form action="." method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {{ form | bootstrap }}
                     <input class="btn btn-primary" type="submit" value="Login">
                   </form>
                 </div>

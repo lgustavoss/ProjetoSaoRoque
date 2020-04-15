@@ -5,8 +5,8 @@ from django.db import models
 # Aqui começam os cadatros
 # Classe colaborador
 class Colaborador(models.Model):
-    nome = models.CharField(max_length=50, help_text="Informe o nome do colaborador.")
-    funcao = models.CharField(max_length=10, help_text="Informe a função do colaborador.")
+    nome = models.CharField(max_length=50)
+    funcao = models.CharField(max_length=10)
 
     class Meta:
         ordering = ['nome']
@@ -19,8 +19,8 @@ class Colaborador(models.Model):
 
 # Classe Estabelecimento
 class Estabelecimento(models.Model):
-    nome = models.CharField(max_length=50, help_text="Informe o nome do estabelecimento.")
-    cnpj = models.CharField(max_length=20, help_text="Informe o cnpj (00.000.00/0000-00)")
+    nome = models.CharField(max_length=50)
+    cnpj = models.CharField(max_length=20, help_text="Ex.: 00.000.00/0000-00")
 
     class Meta:
         ordering = ['nome']
@@ -34,17 +34,17 @@ class Estabelecimento(models.Model):
 class Computador(models.Model):
     TIPO_CHOICES = (
         ('desktop', 'Desktop'),
-        ('notebook', 'notebook'),
+        ('notebook', 'Notebook'),
     )
     tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
     colaborador = models.ForeignKey(Colaborador, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
-    marca = models.CharField(max_length=15, help_text="Informe a marca do equipamento.")
-    modelo = models.CharField(max_length=15, help_text="Informe o modelo do equipamento.")
-    processador = models.CharField(max_length=15, help_text="Informe o processador do equipamento.")
-    memoria = models.CharField(max_length=15, help_text="Informe a memódia do equipamento.")
-    armazenamento = models.CharField(max_length=20, help_text="Informe a capacidade de armazenamento do equipamento.")
-    service_tag = models.CharField(max_length=15, unique=True, help_text="Informe a Service TAG do equipamento.")
+    marca = models.CharField(max_length=15)
+    modelo = models.CharField(max_length=15)
+    processador = models.CharField(max_length=15)
+    memoria = models.CharField(max_length=15)
+    armazenamento = models.CharField(max_length=20)
+    service_tag = models.CharField(max_length=15, unique=True)
     observacoes = models.TextField(null=True, blank=True)
 
     class Meta:
@@ -69,9 +69,9 @@ class Dispositivos(models.Model):
     tipo = models.CharField(max_length=15, choices=TIPO_COICES)
     colaborador = models.ForeignKey(Colaborador, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
-    marca = models.CharField(max_length=15, help_text="Informe a marca do equipamento.")
-    modelo = models.CharField(max_length=15, help_text="Informe o modelo do equipamento.")
-    service_tag = models.CharField(max_length=15, unique=True, help_text="Informe a Service TAG do equipamento.")
+    marca = models.CharField(max_length=15)
+    modelo = models.CharField(max_length=15)
+    service_tag = models.CharField(max_length=15, unique=True)
     observacoes = models.TextField(null=True, blank=True)
 
     class Meta:
@@ -102,19 +102,19 @@ class Maquininha(models.Model):
     )
 
     STATUS_CHOICES = (
-        ('ativo', 'Ativo'),
-        ('inativo', 'Inativo'),
+        ('Ativo', 'Ativo'),
+        ('Inativo', 'Inativo'),
     )
 
     tipo = models.CharField(max_length=10, null=False, choices=TIPO_CHOICES)
     adquirente = models.ForeignKey(Adquirentes, on_delete=models.PROTECT)
     estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.PROTECT)
-    n_serie = models.IntegerField(null=False, unique=True, help_text="Informe o Nº de serie.")
-    n_logico = models.CharField(max_length=10, unique=True, help_text="Informe o nº da etiqueta do verso.")
-    mensalidade = models.FloatField(help_text="Informe o valor da mensalidade")
+    n_serie = models.IntegerField(null=False, unique=True)
+    n_logico = models.CharField(max_length=10, unique=True)
+    mensalidade = models.FloatField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
-    data_ativacao = models.DateField(help_text="Informe a data de Ativação.")
-    data_inativacao = models.DateField(blank=True, null=True, help_text="Informe a data de Inativação.")
+    data_ativacao = models.DateField()
+    data_inativacao = models.DateField(blank=True, null=True)
     observacoes = models.TextField(null=True, blank=True)
 
     class Meta:

@@ -43,7 +43,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="#">
           <i class="fas fa-home"></i>
           <span>Inicio</span></a>
       </li>
@@ -61,11 +61,11 @@
         <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{% url 'cadastrar_adquirente' %}">Adquirente</a>
-            <a class="collapse-item" href="#">Colaborador</a>
-            <a class="collapse-item" href="#">Computador</a>
-            <a class="collapse-item" href="#">Dispositivo</a>
-            <a class="collapse-item" href="#">Estabelecimento</a>
-            <a class="collapse-item" href="#">Maquininha</a>
+            <a class="collapse-item" href="{% url 'cadastrar_colaborador' %}">Colaborador</a>
+            <a class="collapse-item" href="{% url 'cadastrar_computador' %}">Computador</a>
+            <a class="collapse-item" href="{% url 'cadastrar_dispositivo' %}">Dispositivo</a>
+            <a class="collapse-item" href="{% url 'cadastrar_estabelecimento' %}">Estabelecimento</a>
+            <a class="collapse-item" href="{% url 'cadastrar_maquininha' %}">Maquininha</a>
           </div>
         </div>
       </li>
@@ -82,12 +82,12 @@
         </a>
         <div id="collapse2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Adquirente</a>
-            <a class="collapse-item" href="#">Colaborador</a>
-            <a class="collapse-item" href="#">Computador</a>
-            <a class="collapse-item" href="#">Dispositivo</a>
-            <a class="collapse-item" href="#">Estabelecimento</a>
-            <a class="collapse-item" href="#">Maquininha</a>
+            <a class="collapse-item" href="{% url 'listar_adquirentes' %}">Adquirente</a>
+            <a class="collapse-item" href="{% url 'listar_colaborador' %}">Colaborador</a>
+            <a class="collapse-item" href="{% url 'listar_computador' %}">Computador</a>
+            <a class="collapse-item" href="{% url 'listar_dispositivo' %}">Dispositivo</a>
+            <a class="collapse-item" href="{% url 'listar_estabelecimento' %}">Estabelecimento</a>
+            <a class="collapse-item" href="{% url 'listar_maquininha' %}">Maquininha</a>
           </div>
         </div>
       </li>
@@ -169,12 +169,13 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
               </a>
               <!-- Dropdown - User Information -->
-            <a class="dropdown-item" href="#">
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Logout
+              <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
               </a>
-          </li>
+            </li>
 
           </ul>
 
@@ -220,7 +221,7 @@
         <div class="modal-body">Selecione Logout para encerrar a seção atual.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+          <a class="btn btn-primary" href="{% url 'login' %}">Logout</a>
         </div>
       </div>
     </div>

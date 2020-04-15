@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+
+{% load bootstrap %}
+
+{% block title %}Listar Maquininhas{% endblock %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Adquirente</th>
+                    <th>Estabelecimento</th>
+                    <th>Nº de Série</th>
+                    <th>Nº Lógico</th>
+                    <th>Mensalidade</th>
+                    <th>Status</th>
+                    <th>Data Ativação</th>
+                    <th>Data Inativação</th>
+                    <th>Observações</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for maquininha in lista %}
+                <tr>
+                    <td>{{maquininha.tipo}}</td>
+                    <td>{{maquininha.adquirente}}</td>
+                    <td>{{maquininha.estabelecimento}}</td>
+                    <td>{{maquininha.n_serie}}</td>
+                    <td>{{maquininha.n_logico}}</td>
+                    <td>{{maquininha.mensalidade}}</td>
+                    <td>{{maquininha.status}}</td>
+                    <td>{{maquininha.data_ativacao}}</td>
+                    <td>{{maquininha.data_inativacao}}</td>
+                    <td>{{maquininha.observacao}}</td>
+                    <td></td>
+                    <td>
+                        <a href="{% url 'editar_maquininha' pk=maquininha.pk %}">
+                            <i class="far fa-edit"></i>
+                        </a>
+
+                        <a href="{% url 'remover_maquininha' pk=maquininha.pk %}">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="float-right">
+            <h1>
+                <a href="{% url 'cadastrar_maquininha' %}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </h1>
+        </div>
+
+
+    </div>
+{% endblock %}

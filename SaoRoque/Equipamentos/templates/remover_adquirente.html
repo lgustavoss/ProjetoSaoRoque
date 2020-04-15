@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Remover Adquirente
+{% endblock title %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <h4>Tem certeza que deseja remover a Adquirente "{{adquirente.adquirente}}" ?</h4>
+    <br>
+<button type="submit" class="btn btn-primary">
+    Remover
+</button>
+</form>
+{% endblock content %}
