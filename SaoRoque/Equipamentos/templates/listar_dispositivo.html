@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% load bootstrap %}
+
+{% block title %}Listagem de Dispositivos{% endblock %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Colaborador</th>
+                    <th>Estabelecimento</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Service Tag</th>
+                    <th>Observações</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for dispositivos in lista %}
+                <tr>
+                    <td>{{dispositivos.tipo}}</td>
+                    <td>{{dispositivos.colaborador}}</td>
+                    <td>{{dispositivos.estabelecimento}}</td>
+                    <td>{{dispositivos.marca}}</td>
+                    <td>{{dispositivos.modelo}}</td>
+                    <td>{{dispositivos.service_tag}}</td>
+                    <td>{{maquininha.observacao}}</td>
+                    <td></td>
+                    <td>
+                        <a href="{% url 'editar_dispositivo' pk=dispositivos.pk %}">
+                            <i class="far fa-edit"></i>
+                        </a>
+
+                        <a href="{% url 'remover_dispositivo' pk=dispositivos.pk %}">
+                            <i class="far fa-trash-alt"></i>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="float-right">
+            <h1>
+                <a href="{% url 'cadastrar_dispositivo' %}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </h1>
+        </div>
+
+
+    </div>
+{% endblock %}

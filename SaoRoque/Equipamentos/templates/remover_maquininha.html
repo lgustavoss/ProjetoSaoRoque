@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Remover Maquininha
+{% endblock title %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <h4>Tem certeza que deseja remover a maquininha "{{maquininha.tipo}}" com com o Nº Logico
+        "{{maquininha.n_logico}}"  ?</h4>
+    <br>
+<button type="submit" class="btn btn-primary">
+    Remover
+</button>
+</form>
+{% endblock content %}

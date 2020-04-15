@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% load bootstrap %}
+
+{% block title %}Listagem de Colaboradores{% endblock %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Função</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for colaborador in lista %}
+                <tr>
+                    <td>{{colaborador.nome}}</td>
+                    <td>{{colaborador.funcao}}</td>
+                    <td>
+                        <a href="{% url 'editar_colaborador' pk=colaborador.pk %}">
+                            <i class="far fa-edit"></i>
+                        </a>
+
+                        <a href="{% url 'remover_colaborador' pk=colaborador.pk %}">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="float-right">
+            <h1>
+                <a href="{% url 'cadastrar_colaborador' %}">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </h1>
+        </div>
+
+
+    </div>
+{% endblock %}

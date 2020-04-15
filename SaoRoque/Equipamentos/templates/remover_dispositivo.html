@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Remover Dispositivo
+{% endblock title %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <h4>Tem certeza que deseja remover o dispositivo "{{dispositivo.tipo}}" com a servie tag
+        "{{dispositivo.service_tag}}"  ?</h4>
+    <br>
+<button type="submit" class="btn btn-primary">
+    Remover
+</button>
+</form>
+{% endblock content %}
